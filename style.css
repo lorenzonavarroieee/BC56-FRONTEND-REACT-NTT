@@ -67,10 +67,8 @@ h1 {
 }
 
 .container{
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: 7.5%;
-  padding-left: 7.5%;
+  display: flex;
+  justify-content: center;
 }
 .footer{
   margin-top: 80px;
@@ -88,6 +86,14 @@ h1 {
   max-width: 800px;
 }
 
+#categories{
+  width: 100px;
+}
+
+.search-bar{
+  margin-top: 10px;
+}
+
 
 .footer-main-first{
   display: flex;
@@ -95,6 +101,22 @@ h1 {
   gap: 40px;
 
 }
+
+.footer-div{
+  padding: 7rem 0;
+}
+
+.aligned-items{
+  align-items: center !important;
+}
+
+.row-footer {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
 
 .header-icons{
   display: flex;
@@ -108,6 +130,14 @@ h1 {
 .footer-main{
   display: flex;
 }
+
+.footer-left{
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
 
 button {
   border-radius: 8px;
@@ -138,5 +168,12 @@ button:focus-visible {
   }
   button {
     background-color: #f9f9f9;
+  }
+}
+
+@media (min-width: 800px) {
+  .padding-left{
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
   }
 }
