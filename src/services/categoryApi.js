@@ -10,7 +10,7 @@ export async function getAllCategories(){
 
 export async function getProductsByCategory(category){
     try{
-        const response = await fetch(`https://dummyjson.com//products/category/${category}`);
+        const response = await fetch(`https://dummyjson.com/products/category/${category}`);
         const data = response.json();
         return data
     } catch(error){
