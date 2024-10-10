@@ -1,6 +1,7 @@
+import { ProductApiResponse } from "../types/api-response";
 import { Product } from "../types/product";
 
-export async function getProducts() : Promise<Product[]> {
+export async function getProducts() : Promise<ProductApiResponse> {
     try{
         const response = await fetch(`${import.meta.env.VITE_BASE_URL}/products`);
         const data = await response.json();
@@ -10,7 +11,7 @@ export async function getProducts() : Promise<Product[]> {
     }
 }
 
-export async function searchProduct(name: string): Promise<Product[]>{
+export async function searchProduct(name: string): Promise<ProductApiResponse>{
     try{
         const response = await fetch(`${import.meta.env.VITE_BASE_URL}/products/search?q=${name}`);
         const data = await response.json();
