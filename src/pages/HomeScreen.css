@@ -1,0 +1,18 @@
+.align-items{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.products-grid{
+    display: grid;
+    grid-auto-columns: max-content;
+    grid-auto-flow: dense;
+    grid-auto-rows: minmax(100px, auto);
+    gap: 25px;
+    grid-template-columns: repeat(3, 1fr);
+  
+    margin: 60px auto;
+    max-width: 800px;
+}
+
