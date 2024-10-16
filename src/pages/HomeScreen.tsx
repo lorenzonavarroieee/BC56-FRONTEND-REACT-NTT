@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import './HomeScreen.css'
 import { Product } from "../entities/product";
-import { limitAndSkipProducts } from "../services/products/product-service";
+import { limitAndSkipProducts, searchProductByName } from "../services/products/product-service";
 import Card from "../components/Card/Card";
 import TextInputComponent from "../components/TextField/TextField";
 import { Category } from "../entities/category";
@@ -31,7 +31,18 @@ function HomeScreen(){
         }
     }
 
-    // const searchProduct = () => {}
+    const searchProduct = async(e: ChangeEvent<HTMLInputElement>) => {
+        const target = e.target.value;
+        try{
+            const query = await searchProductByName(target);
+            if(query){
+                setProducts(query.products);
+            }
+        }catch(error){
+            throw new Error();
+        }
+        
+    }
 
     // const buyItem = () => {}
 
@@ -57,15 +68,21 @@ function HomeScreen(){
     return(
         <div>
             <div>
-                <TextInputComponent placeholder="Search your product" onKeyPress={() => {}} />
+                {/* <TextInputComponent placeholder="Search your product" onKeyPress={() => {}} /> */}
+                <form>
+                    <input type="text" placeholder="Search your product here" onChange={searchProduct}/>
+                </form>
                 <button onClick={handleSetPrevPage}>Prev Page</button>
                 <button onClick={handleSetNextPage}>Next Page</button>
             </div>
-            <div className="align-items">
-                <div className="products-grid">
-                    {products && products.map((product) => <Card key={product.id} product={product} onPress={() => {}}/> )}
+            
+            <main className="product-grid">
+                <div className="align-items">
+                    <div className="products-grid">
+                        {products && products.map((product) => <Card key={product.id} product={product} onPress={() => {}}/> )}
+                    </div>
                 </div>
-            </div>
+            </main>
         </div>
     )
 }

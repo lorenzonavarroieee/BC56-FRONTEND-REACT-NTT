@@ -13,7 +13,7 @@ export async function getProducts() : Promise<ProductApiResponse> {
     }
 }
 
-export async function searchProduct(name: string): Promise<ProductApiResponse>{
+export async function searchProductByName(name: string): Promise<ProductApiResponse>{
     try{
         const response = await fetch(`${import.meta.env.VITE_BASE_URL}/products/search?q=${name}`);
         const data = await response.json();
