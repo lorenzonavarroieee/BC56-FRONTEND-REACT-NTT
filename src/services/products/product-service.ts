@@ -42,3 +42,38 @@ export async function limitAndSkipProducts(limit: number, skip: number): Promise
         throw new Error();
     }
 }
+
+export async function addNewProduct(product: Product): Promise<Product>{
+    try{
+        const payload = await fetch(`${import.meta.env.VITE_BASE_URL}/products/add`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                title: product.title,
+                description: product.description,
+                category: product.category,
+                price: product.price,
+                rating: product.rating,
+                stock: product.stock,
+                thumbnail: product.thumbnail
+            })
+        });
+
+        const data = await payload.json();
+        return data;
+    }catch(error){
+        throw new Error();
+    }
+}
+
+export async function deleteProduct(id: number){
+    try {
+        const payload = await fetch(`${import.meta.env.VITE_BASE_URL}/products/${id}`,{
+            method: 'DELETE'
+        });
+        const data = await payload.json();
+        return data;
+    }catch(error){
+        throw new Error();
+    }
+}
